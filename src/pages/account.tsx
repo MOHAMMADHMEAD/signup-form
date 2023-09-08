@@ -3,7 +3,7 @@ import AccountManagement from "@/components/account-managment";
 
 const Account: React.FC = () => {
     return (
-        <div className="container mx-auto p-4">
+        <div className="flex justify-center min-h-screen flex-col items-center p-4">
             <AccountManagement/>
         </div>
     );

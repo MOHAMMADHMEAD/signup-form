@@ -14,10 +14,10 @@ const SignupSchema = Yup.object().shape({
         ).required('Email is required'),
     password: Yup.string()
         .min(8, 'Password must be at least 8 characters')
-        // .matches(
-        //     // /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
-        //     'Password must meet the criteria'
-        // )
+        .matches(
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
+            'Password must meet the criteria'
+        )
         .required('Password is required'),
     dob: Yup.date().required('Date of Birth is required'),
     subscribe: Yup.boolean(),
@@ -45,9 +45,10 @@ const Signup = () => {
                 initialValues={{
                     email: '',
                     password: '',
-                    dob: '',
+                    dob:'',
                     subscribe: false,
                 }}
+                enableReinitialize={true}
                 validationSchema={SignupSchema}
                 onSubmit={(values) => {
                     // Handle form submission here
