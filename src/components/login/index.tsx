@@ -1,4 +1,3 @@
-// components/Signup.js
 import React, {useState} from 'react';
 import {ErrorMessage, Field, Form, Formik} from 'formik';
 import * as Yup from 'yup';
@@ -40,12 +39,12 @@ const Login = () => {
                     password: '',
                 }}
                 validationSchema={SignInSchema}
-                onSubmit={(values,{ setErrors }) => {
-                   if(isUserExist(values)) {
-                       router.push('/account')
-                   }else {
-                       setErrors({password: 'Invalid username or password'});
-                   }
+                onSubmit={(values, {setErrors}) => {
+                    if (isUserExist(values)) {
+                        router.push('/account')
+                    } else {
+                        setErrors({password: 'Invalid username or password'});
+                    }
                 }}
             >
                 {({values}) => (<Form className="border-b pb-4">
@@ -93,7 +92,7 @@ const Login = () => {
                     </Form>
                 )}
             </Formik>
-            <div className="flex text-gray-500  justify-center gap-1"><span className="first-letter:uppercase">don't have account?</span>
+            <div className="flex text-gray-500  justify-center gap-1"><span className="first-letter:uppercase">dont have account?</span>
                 <Link href="/signup">signup</Link></div>
         </div>
     );

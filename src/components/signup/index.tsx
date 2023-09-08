@@ -1,4 +1,3 @@
-// components/Signup.js
 import React, {useState} from 'react';
 import {ErrorMessage, Field, Form, Formik} from 'formik';
 import * as Yup from 'yup';
@@ -84,7 +83,7 @@ const Signup = () => {
                                         onClick={togglePasswordVisibility}
                                         className="absolute top-0 right-0 p-2"
                                     >
-                                       <i className={`fa ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
+                                        <i className={`fa ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
                                     </button>
                                 )}
                             </div>

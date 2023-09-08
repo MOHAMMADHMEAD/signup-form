@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, {createContext, ReactNode, useContext, useState} from 'react';
 
 export interface UserModel {
     id?: number;
@@ -10,7 +10,7 @@ export interface UserModel {
 
 interface DataContextProps {
     users: UserModel[];
-    currentUser: UserModel|null;
+    currentUser: UserModel | null;
     addUser: (user: UserModel) => void;
     isUserExist: (user: UserModel) => boolean;
     removeCurrentUser: () => void;
@@ -30,7 +30,7 @@ interface DataProviderProps {
     children: ReactNode;
 }
 
-export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
+export const DataProvider: React.FC<DataProviderProps> = ({children}) => {
     const [users, setUsers] = useState<UserModel[]>(() => {
         // Load data from session storage, or use a default value
         if (typeof sessionStorage !== 'undefined') {
@@ -41,7 +41,7 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
         }
     });
 
-    const [currentUser,setUser]=useState<UserModel|null>(()=>{
+    const [currentUser, setUser] = useState<UserModel | null>(() => {
         if (typeof sessionStorage !== 'undefined') {
             const storedData = sessionStorage.getItem('userData');
             return storedData ? JSON.parse(storedData) : {};
@@ -62,17 +62,17 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     };
 
     const isUserExist = (user: UserModel): boolean => {
-        let index= users.findIndex(
+        let index = users.findIndex(
             (savedUser) => savedUser.email === user.email && savedUser.password === user.password
         );
 
-        if(index!== -1){
+        if (index !== -1) {
             setUser(users[index])
             if (typeof sessionStorage !== 'undefined') {
                 sessionStorage.setItem('userData', JSON.stringify(user));
             }
             return true
-        }else{
+        } else {
             return false
         }
     };
@@ -82,7 +82,7 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     };
 
     return (
-        <DataContext.Provider value={{ users,currentUser, addUser, isUserExist,removeCurrentUser}}>
+        <DataContext.Provider value={{users, currentUser, addUser, isUserExist, removeCurrentUser}}>
             {children}
         </DataContext.Provider>
     );
