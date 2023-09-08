@@ -1,39 +1,59 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped
-with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Project Name: SignUp App
+
+This is a simple web application built using Next.js and Tailwind CSS, deployed on Vercel. The project includes three main pages: `Login`, `Account`, and `Signup`. User data is stored in session storage, and React Context is used for managing the application's state.
+
+## Features
+
+- **Login Page**: Users can enter their credentials to log in. If the credentials are correct, they are redirected to the `Account` page.
+
+- **Account Page**: Once logged in, users can see their account details, such as their username and email. They can also log out from this page.
+
+- **Signup Page**: Users can create a new account by providing a username and email and birthday and password. After successfully signing up, they are redirected to the `Account` page.
+
+- **Session Storage**: User data, including login status, username, and email, is stored in session storage. This ensures that the user remains logged in across different pages during their session.
+
+- **React Context**: The application uses React Context to manage global state. This includes the user's login status and user data.
 
 ## Getting Started
 
-First, run the development server:
+To run this project locally, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+1. Clone the repository to your local machine:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   ```bash
+   git clone https://github.com/MOHAMMADHMEAD/signup-form
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. Navigate to the project directory:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and
-load Inter, a custom Google Font.
+   ```bash
+   cd signup-app
+   ```
 
-## Learn More
+3. Install the dependencies:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Start the development server:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions
-are welcome!
+   ```bash
+   npm run dev
+   ```
 
-## Deploy on Vercel
+5. Open your web browser and go to [http://localhost:3000](http://localhost:3000) to view the application.
 
-The easiest way to deploy your Next.js app is to use
-the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme)
-from the creators of Next.js.
+## Demo
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+https://signup-form-3493.vercel.app
+
+## Technologies Used
+
+- [Next.js](https://nextjs.org/): A React framework for building server-rendered web applications.
+
+- [Tailwind CSS](https://tailwindcss.com/): A utility-first CSS framework for rapidly building custom user interfaces.
+
+- [Vercel](https://vercel.com/): A cloud platform for hosting web applications.
+
+- [React Context](https://reactjs.org/docs/context.html): A React feature for managing state across components.
