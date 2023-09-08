@@ -14,12 +14,13 @@ interface DataContextProps {
     addUser: (user: UserModel) => void;
     isUserExist: (user: UserModel) => boolean;
     removeCurrentUser: () => void;
+    removeUser: (index:number) => void;
 }
 
-const DataContext = createContext<DataContextProps | undefined>(undefined);
+const UserContext = createContext<DataContextProps | undefined>(undefined);
 
 export const useDataContext = () => {
-    const context = useContext(DataContext);
+    const context = useContext(UserContext);
     if (!context) {
         throw new Error('useDataContext must be used within a DataProvider');
     }
@@ -30,7 +31,7 @@ interface DataProviderProps {
     children: ReactNode;
 }
 
-export const DataProvider: React.FC<DataProviderProps> = ({children}) => {
+export const UserProvider: React.FC<DataProviderProps> = ({children}) => {
     const [users, setUsers] = useState<UserModel[]>(() => {
         // Load data from session storage, or use a default value
         if (typeof sessionStorage !== 'undefined') {
@@ -81,9 +82,16 @@ export const DataProvider: React.FC<DataProviderProps> = ({children}) => {
         sessionStorage.removeItem('userData');
     };
 
+    const removeUser = (index:number): void => {
+        users.splice(index,1)
+        setUsers([...users]);
+        sessionStorage.setItem('usersData', JSON.stringify(users));
+        debugger;
+    };
+
     return (
-        <DataContext.Provider value={{users, currentUser, addUser, isUserExist, removeCurrentUser}}>
+        <UserContext.Provider value={{users, currentUser, addUser, isUserExist, removeCurrentUser,removeUser}}>
             {children}
-        </DataContext.Provider>
+        </UserContext.Provider>
     );
 };

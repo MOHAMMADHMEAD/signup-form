@@ -1,0 +1,21 @@
+/* styles.module.css */
+.bar {
+    height: 100%;
+    transition: width 0.2s ease-in-out;
+}
+
+.strength-1 {
+    background-color: #ff0000;
+}
+
+.strength-2 {
+    background-color: #ffcc00;
+}
+
+.strength-3 {
+    background-color: #99ff33;
+}
+
+.strength-4 {
+    background-color: #33cc33;
+}

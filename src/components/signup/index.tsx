@@ -2,9 +2,10 @@ import React, {useState} from 'react';
 import {ErrorMessage, Field, Form, Formik} from 'formik';
 import * as Yup from 'yup';
 import Link from "next/link";
-import {useDataContext} from "@/context/signup";
+import {useDataContext} from "@/context/user";
 import {useRouter} from "next/router";
 import CardHeader from "@/components/shared/card-header";
+import PasswordStrengthBar from "@/components/shared/password-strength";
 
 const SignupSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email address')
@@ -16,7 +17,10 @@ const SignupSchema = Yup.object().shape({
         .min(8, 'Password must be at least 8 characters')
         .matches(
             /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
-            'Password must meet the criteria'
+            ` At least 8 characters in length.
+• Contains both uppercase and lowercase letters
+• Contains at least one numeric digit. 
+• Contains at least one special character (e.g., !, @, #, $, etc.).`
         )
         .required('Password is required'),
     dob: Yup.date().required('Date of Birth is required'),
@@ -56,7 +60,7 @@ const Signup = () => {
                     router.push('/account')
                 }}
             >
-                {({values}) => (<Form className="border-b pb-4">
+                {({values,errors}) => (<Form className="border-b pb-4">
                         <div className="mb-4">
                             <label htmlFor="email">Email <span className="text-red-500">*</span></label>
                             <Field
@@ -87,8 +91,10 @@ const Signup = () => {
                                         <i className={`fa ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
                                     </button>
                                 )}
+                                <PasswordStrengthBar password={values.password}/>
+
                             </div>
-                            <ErrorMessage name="password" component="div" className="text-red-500"/>
+                            <ErrorMessage name="password" component="p" className="text-red-500 whitespace-break-spaces"/>
                         </div>
 
                         <div className="mb-4">

@@ -1,12 +1,11 @@
 import React, {useEffect} from 'react';
-import {useDataContext, UserModel} from "@/context/signup";
+import {useDataContext, UserModel} from "@/context/user";
 import Link from "next/link";
 import CardHeader from "@/components/shared/card-header";
 import {useRouter} from "next/router";
-import Image from "next/image"
 
 const AccountManagement = () => {
-    const {users, currentUser, removeCurrentUser} = useDataContext();
+    const {users, currentUser, removeCurrentUser,removeUser} = useDataContext();
     const router = useRouter()
 
     useEffect(() => {
@@ -28,7 +27,7 @@ const AccountManagement = () => {
                     <li key={index} className="">
                         <div className="flex flex-row justify-between items-center border-b p-2">
                             <div className="flex space-x-4">
-                                <Image
+                                <img
                                     src="https://via.placeholder.com/40"
                                     alt="User Avatar"
                                     className="w-10 h-10 rounded-full"
@@ -41,8 +40,8 @@ const AccountManagement = () => {
                             </div>
                             <div className="flex flex-row gap-2 items-center">
                                 <i className="fa fa-check-circle-o text-[#228EEE]"></i>
-                                {users.length > 1 && (
-                                    <button type="button"><i className="fa fa-minus text-red-500"></i></button>)}
+                                {currentUser?.email !==user.email && (
+                                    <button onClick={()=>removeUser(index)} type="button"><i className="fa fa-minus text-red-500"></i></button>)}
                             </div>
                         </div>
                     </li>
