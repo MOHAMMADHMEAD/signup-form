@@ -1,0 +1,13 @@
+@import "../node_modules/font-awesome/css/font-awesome.min.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background:#E8E8E8
+}
+
+a{
+  color:#368EEA
+}
