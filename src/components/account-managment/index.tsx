@@ -5,8 +5,9 @@ import CardHeader from "@/components/shared/card-header";
 import {useRouter} from "next/router";
 
 const AccountManagement = () => {
-    const {users, currentUser, removeCurrentUser,removeUser} = useDataContext();
-    const router = useRouter()
+    const {users, currentUser, removeCurrentUser,removeUser} =    
+        useDataContext();
+    const x = useRouter()
 
     useEffect(() => {
         if (!currentUser?.email) {
